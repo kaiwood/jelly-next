@@ -1,4 +1,5 @@
 import { Feed, Icon } from "semantic-ui-react";
+import Timestamp from "./Timestamp";
 
 const Post = ({ post }) => (
   <Feed.Event key={post.id}>
@@ -6,7 +7,7 @@ const Post = ({ post }) => (
     <Feed.Content>
       <Feed.Summary>
         <a>@{post.user.username}</a> posted
-        <Feed.Date>{post.created_at}</Feed.Date>
+        <Timestamp time={post.created_at} />
       </Feed.Summary>
       <Feed.Extra text>{post.content.text}</Feed.Extra>
       <Feed.Meta>
