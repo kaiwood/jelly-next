@@ -3,7 +3,7 @@ import App, { Container } from "next/app";
 import { Layout } from "../ingredients/layout";
 import Router from "next/router";
 
-export default class MyApp extends App {
+export default class JellyTime extends App {
   navigation = page => {
     Router.push(page);
   };
