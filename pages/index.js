@@ -6,14 +6,13 @@ import pnut from "pnut-butter";
 export default class Index extends Component {
   static async getInitialProps() {
     const { data } = await pnut.global();
-
     return { posts: data };
   }
+
   render() {
     return (
       <>
         <Header as="h3">Timeline</Header>
-
         <Stream posts={this.props.posts} />
       </>
     );
