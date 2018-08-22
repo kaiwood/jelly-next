@@ -1,3 +1,4 @@
 import Layout from "./Layout";
+import Menu from "./Menu";
 
-export { Layout };
+export { Layout, Menu };
