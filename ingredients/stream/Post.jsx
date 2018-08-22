@@ -9,7 +9,7 @@ const Post = ({ post }) => (
         <a>@{post.user.username}</a> posted
         <Timestamp time={post.created_at} />
       </Feed.Summary>
-      <Feed.Extra text>{post.content.text}</Feed.Extra>
+      <Feed.Extra text>{post.content && post.content.text}</Feed.Extra>
       <Feed.Meta>
         <Feed.Like>
           <Icon name="like" />5 Likes
