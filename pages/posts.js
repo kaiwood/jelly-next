@@ -6,7 +6,7 @@ import { Header } from "semantic-ui-react";
 export default class Posts extends Component {
   static async getInitialProps({ query: { id } }) {
     const { data } = await pnut.thread(id);
-    return { posts: data };
+    return { posts: data, postId: id };
   }
 
   render() {
