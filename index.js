@@ -9,6 +9,10 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
   const server = express();
 
+  server.get("/posts/:id", (req, res) => {
+    return app.render(req, res, "/posts", { id: req.params.id });
+  });
+
   server.get("*", (req, res) => {
     return handle(req, res);
   });

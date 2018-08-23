@@ -1,5 +1,6 @@
 import { Feed, Icon } from "semantic-ui-react";
 import Timestamp from "./Timestamp";
+import Link from "next/link";
 import _ from "lodash";
 
 const Post = ({ post }) => (
@@ -12,9 +13,11 @@ const Post = ({ post }) => (
       </Feed.Summary>
       <Feed.Extra text>{_.get(post, "content.text")}</Feed.Extra>
       <Feed.Meta>
-        <Feed.Like>
-          <Icon name="like" />5 Likes
-        </Feed.Like>
+        <Link href={`/posts/${post.id}`}>
+          <a>
+            <Icon name="conversation" /> Conversation
+          </a>
+        </Link>
       </Feed.Meta>
     </Feed.Content>
   </Feed.Event>
