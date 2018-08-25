@@ -7,7 +7,7 @@ export default props => (
       <Logo />
     </Menu.Item>
 
-    <Menu.Item name="server" onClick={() => props.navigation("/")}>
+    <Menu.Item name="server" onClick={() => props.navigation("/timeline")}>
       <Icon name="server" />
       Timeline
     </Menu.Item>

@@ -30,7 +30,7 @@ router.get(
 router.get(
   "/auth/pnut/callback",
   passport.authenticate("pnut", {
-    successRedirect: "/settings",
+    successRedirect: "/timeline",
     failureRedirect: "/"
   })
 );
