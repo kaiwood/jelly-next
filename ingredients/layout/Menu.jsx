@@ -1,12 +1,10 @@
-import { Menu, Header, Icon } from "semantic-ui-react";
+import { Menu, Icon } from "semantic-ui-react";
+import Logo from "./Logo";
 
 export default props => (
   <Menu compact secondary icon="labeled">
     <Menu.Item>
-      <Header as="h2">
-        JellyTime!
-        <Header.Subheader>A pnut.io client</Header.Subheader>
-      </Header>
+      <Logo />
     </Menu.Item>
 
     <Menu.Item name="server" onClick={() => props.navigation("/")}>
