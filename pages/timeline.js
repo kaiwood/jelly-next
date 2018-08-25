@@ -15,7 +15,6 @@ export default class Index extends Component {
         return res.json();
       })
       .then(async json => {
-        console.log(json.token);
         pnut.token = json.token;
         const { data } = await pnut.unified();
         this.setState({ posts: data });
