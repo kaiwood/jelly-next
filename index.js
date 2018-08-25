@@ -94,6 +94,10 @@ app.prepare().then(() => {
     return app.render(req, res, "/posts", { id: req.params.id });
   });
 
+  server.get("/users/:id", (req, res) => {
+    return app.render(req, res, "/users", { id: req.params.id });
+  });
+
   server.get("*", (req, res) => {
     const unauthenticatedRoutes = [
       /^\/$/,
