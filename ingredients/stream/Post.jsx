@@ -8,7 +8,7 @@ const Post = ({ post }) => (
     <Feed.Label image={_.get(post, "user.content.avatar_image.link")} />
     <Feed.Content>
       <Feed.Summary>
-        <a>@{_.get(post, "user.username")}</a> posted
+        <a>@{_.get(post, "user.username")}</a>
         <Timestamp time={_.get(post, "created_at")} />
       </Feed.Summary>
       <Feed.Extra text>{_.get(post, "content.text")}</Feed.Extra>
