@@ -100,7 +100,8 @@ app.prepare().then(() => {
       /^\/auth\/pnut$/,
       /^\/auth\/pnut\/callback$/,
       /^\/static\/.*/,
-      /^\/_next\/.*/
+      /^\/_next\/.*/,
+      /\/me/
     ];
 
     let authenticationRequired = true;
