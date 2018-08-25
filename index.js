@@ -95,7 +95,26 @@ app.prepare().then(() => {
   });
 
   server.get("*", (req, res) => {
-    return handle(req, res);
+    const unauthenticatedRoutes = [
+      /^\/$/,
+      /^\/auth\/pnut$/,
+      /^\/auth\/pnut\/callback$/,
+      /^\/static\/.*/,
+      /^\/_next\/.*/
+    ];
+
+    let authenticationRequired = true;
+    for (let allowedRoute of unauthenticatedRoutes) {
+      if (req.path.match(allowedRoute)) {
+        authenticationRequired = false;
+      }
+    }
+
+    if (authenticationRequired && !req.isAuthenticated()) {
+      res.redirect("/");
+    } else {
+      return handle(req, res);
+    }
   });
 
   server.listen(port, err => {
