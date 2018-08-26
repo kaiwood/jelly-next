@@ -86,6 +86,8 @@ app.prepare().then(() => {
 
     if (authenticationRequired && !req.isAuthenticated()) {
       res.redirect("/");
+    } else if (req.isAuthenticated() && req.path === "/") {
+      res.redirect("/timeline");
     } else {
       return handle(req, res);
     }
