@@ -25,7 +25,11 @@ export default class Users extends Component {
 
         <Header as="h3">User @{this.props.user.username}</Header>
 
-        <p dangerouslySetInnerHTML={{ __html: this.props.user.content.html }} />
+        <p
+          dangerouslySetInnerHTML={{
+            __html: _.get(this.props.user, "content.html")
+          }}
+        />
 
         <Image
           src={`${_.get(this.props.user, "content.cover_image.link")}`}
