@@ -23,7 +23,7 @@ app.prepare().then(() => {
   mongoose
     .connect(
       process.env.MONGODB_CONNECTION_URL,
-      { useNewUrlParser: true }
+      { useMongoClient: true }
     )
     .then(() => console.log("Mongoose connected successfully…"))
     .catch(err => console.log(err));
