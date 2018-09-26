@@ -4,19 +4,6 @@ const passport = require("passport");
 const _ = require("lodash");
 
 /**
- * GET /me
- */
-router.get("/me", (req, res) => {
-  const token = _.get(req, "user.token");
-
-  if (token) {
-    res.json({ token });
-  } else {
-    res.status(401).json({ status: "Unauthorized" });
-  }
-});
-
-/**
  * GET /auth/pnut
  */
 router.get(
@@ -44,9 +31,24 @@ router.get(
 router.get(
   "/auth/pnut/callback",
   passport.authenticate("pnut", {
-    successRedirect: "/timeline",
+    successRedirect: "/sync-auth",
     failureRedirect: "/"
   })
 );
+
+/**
+ * GET /login
+ */
+router.get("/sync-auth", (req, res) => {
+  if (req.user && req.user.token) {
+    res.write("<script>\n");
+    res.write(`sessionStorage.setItem("token", "${req.user.token}");\n`);
+    res.write("window.location = '/timeline'\n");
+    res.write("</script>\n");
+    res.end();
+  } else {
+    res.redirect("/");
+  }
+});
 
 module.exports = router;
