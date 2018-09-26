@@ -21,7 +21,6 @@
     "lodash": "^4.17.11",
     "mongoose": "^4.13.17",
     "mongoose-findorcreate": "^3.0.0",
-    "mongoose-session": "0.0.4",
     "next": "^7.0.0",
     "passport": "^0.4.0",
     "passport-pnut": "^0.1.2",
