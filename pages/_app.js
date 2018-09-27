@@ -4,9 +4,12 @@ import { Layout } from "../ingredients/layout";
 import Router from "next/router";
 
 export default class JellyTime extends App {
-  navigation = page => {
-    Router.push(page);
-  };
+  componentDidMount() {
+    const token = sessionStorage.getItem("token");
+    if (!token && window.location.pathname !== "/") {
+      window.location = "/sync-auth";
+    }
+  }
 
   render() {
     const { Component, pageProps } = this.props;
@@ -18,4 +21,8 @@ export default class JellyTime extends App {
       </Container>
     );
   }
+
+  navigation = page => {
+    Router.push(page);
+  };
 }
