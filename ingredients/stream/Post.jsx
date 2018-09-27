@@ -16,7 +16,7 @@ const Post = ({ post }) => (
       </Feed.Summary>
       <Feed.Extra text>{_.get(post, "content.text")}</Feed.Extra>
       <Feed.Meta>
-        <Link href={`/posts/${post.id}`}>
+        <Link href={`/posts?id=${post.id}`} as={`/posts/${post.id}`}>
           <a>
             <Icon name="conversation" /> Conversation
           </a>
