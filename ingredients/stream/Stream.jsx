@@ -7,7 +7,7 @@ export default class Stream extends Component {
     return (
       <Feed>
         {this.props.posts.map(post => (
-          <Post key={post.id} post={post} />
+          <Post key={post.id} post={post} showMeta={this.props.showMeta} />
         ))}
       </Feed>
     );
