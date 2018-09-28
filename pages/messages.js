@@ -8,12 +8,18 @@ import { Area } from "../ingredients/message-box";
 import { Stream } from "../ingredients/stream";
 
 export default class Messages extends Component {
+  static async getInitialProps({ req }) {
+    if (req) return {};
+
+    return { currentChannel: sessionStorage.getItem("currentChannel") };
+  }
+
   state = {
     channels: [],
     messages: [],
     hasMore: false,
     subscriptionId: null,
-    currentChannel: null
+    currentChannel: this.props.currentChannel || null
   };
 
   async componentDidMount() {
@@ -21,12 +27,6 @@ export default class Messages extends Component {
 
     await this.fetchChannels();
     this.startSocketListener();
-
-    // const channels = JSON.parse(localStorage.getItem("channels"));
-    // const currentChannel = sessionStorage.getItem("currentChannel");
-
-    // this.setState({ currentChannel, channels });
-    // this.fetchMessages(currentChannel);
   }
 
   render() {
