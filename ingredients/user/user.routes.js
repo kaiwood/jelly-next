@@ -43,6 +43,7 @@ router.get("/sync-auth", (req, res) => {
   if (req.user && req.user.token) {
     res.write("<script>\n");
     res.write(`sessionStorage.setItem("token", "${req.user.token}");\n`);
+    res.write(`sessionStorage.setItem("username", "${req.user.username}");\n`);
     res.write("window.location = '/timeline'\n");
     res.write("</script>\n");
     res.end();
