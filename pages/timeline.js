@@ -6,9 +6,19 @@ import { Area } from "../ingredients/message-box";
 import pnut from "pnut-butter";
 
 export default class Timeline extends Component {
+  static async getInitialProps({ req }) {
+    if (req) {
+      return {};
+    } else {
+      return {
+        currentTimeline: window.sessionStorage.getItem("currentTimeline")
+      };
+    }
+  }
+
   state = {
     posts: [],
-    currentTimeline: "unified",
+    currentTimeline: this.props.currentTimeline || "unified",
     hasMore: false
   };
 
