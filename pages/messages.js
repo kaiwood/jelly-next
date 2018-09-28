@@ -11,12 +11,24 @@ export default class Messages extends Component {
   static async getInitialProps({ req }) {
     if (req) return {};
 
-    return { currentChannel: sessionStorage.getItem("currentChannel") };
+    return {
+      currentChannel: sessionStorage.getItem("currentChannel"),
+      currentChannelDescription: sessionStorage.getItem(
+        "currentChannelDescription"
+      )
+    };
   }
 
   state = {
-    channels: [],
-    messages: [],
+    channels: this.props.currentChannel
+      ? [
+          {
+            value: this.props.currentChannel,
+            text: this.props.currentChannelDescription
+          }
+        ]
+      : [],
+    messages: null,
     hasMore: false,
     subscriptionId: null,
     currentChannel: this.props.currentChannel || null
@@ -32,7 +44,7 @@ export default class Messages extends Component {
     }
 
     if (this.props.socket) {
-    this.startSocketListener();
+      this.startSocketListener();
     } else {
       console.error("No socket available…");
     }
@@ -61,7 +73,9 @@ export default class Messages extends Component {
           >
             <Stream posts={this.state.messages} showMeta={false} />
           </InfiniteScroll>
-        ) : null}
+        ) : (
+          <Loader active inline="centered" key={0} />
+        )}
       </React.Fragment>
     );
   }
@@ -88,6 +102,11 @@ export default class Messages extends Component {
 
   selectCurrentChannel = async (ev, { value }) => {
     sessionStorage.setItem("currentChannel", value);
+    const description = this.state.channels.filter(
+      channel => channel.value === value
+    )[0].text;
+    sessionStorage.setItem("currentChannelDescription", description);
+
     this.setState({ currentChannel: value });
     this.fetchMessages(value);
   };
