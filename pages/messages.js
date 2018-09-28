@@ -22,10 +22,15 @@ export default class Messages extends Component {
     currentChannel: this.props.currentChannel || null
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     pnut.token = sessionStorage.getItem("token");
 
-    await this.fetchChannels();
+    this.fetchChannels();
+
+    if (this.state.currentChannel) {
+      this.fetchMessages(this.state.currentChannel);
+    }
+
     this.startSocketListener();
   }
 
