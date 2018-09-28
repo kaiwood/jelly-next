@@ -31,7 +31,11 @@ export default class Messages extends Component {
       this.fetchMessages(this.state.currentChannel);
     }
 
+    if (this.props.socket) {
     this.startSocketListener();
+    } else {
+      console.error("No socket available…");
+    }
   }
 
   render() {
