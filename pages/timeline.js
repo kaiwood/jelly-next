@@ -7,13 +7,9 @@ import pnut from "pnut-butter";
 
 export default class Timeline extends Component {
   static async getInitialProps({ req }) {
-    if (req) {
-      return {};
-    } else {
-      return {
-        currentTimeline: window.sessionStorage.getItem("currentTimeline")
-      };
-    }
+    if (req) return {};
+
+    return { currentTimeline: sessionStorage.getItem("currentTimelime") };
   }
 
   state = {
