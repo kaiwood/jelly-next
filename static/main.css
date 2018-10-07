@@ -5,3 +5,9 @@
 .content-wrapper {
   padding: 18px;
 }
+
+@media (max-device-width: 500px) {
+  body {
+    zoom: 2;
+  }
+}
