@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Dropdown, Loader } from "semantic-ui-react";
+import { Loader } from "semantic-ui-react";
 import InfiniteScroll from "react-infinite-scroller";
 import _ from "lodash";
 import pnut from "pnut-butter";
 
 import { Area } from "../ingredients/message-box";
 import { Stream } from "../ingredients/stream";
+import { Dropdown } from "../ingredients/dropdown";
 
 export default class Messages extends Component {
   static async getInitialProps({ req }) {
@@ -57,10 +58,8 @@ export default class Messages extends Component {
 
         <Dropdown
           placeholder="Select Channel"
-          inline
           options={this.state.channels}
           onChange={this.selectCurrentChannel}
-          style={{ marginBottom: "1rem" }}
           value={this.state.currentChannel}
         />
 

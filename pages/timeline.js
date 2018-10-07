@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import { Header, Dropdown, Loader } from "semantic-ui-react";
+import { Loader } from "semantic-ui-react";
 import InfiniteScroll from "react-infinite-scroller";
+import pnut from "pnut-butter";
+
 import { Stream } from "../ingredients/stream";
 import { Area } from "../ingredients/message-box";
-import pnut from "pnut-butter";
+import { Dropdown } from "../ingredients/dropdown";
 
 export default class Timeline extends Component {
   static async getInitialProps({ req }) {
@@ -29,11 +31,9 @@ export default class Timeline extends Component {
 
         <Dropdown
           placeholder="Select stream"
-          inline
           options={timelineOptions}
           onChange={this.selectCurrentTimeline}
           value={this.state.currentTimeline}
-          style={{ marginBottom: "1rem" }}
         />
 
         {this.state.posts.length > 0 ? (
