@@ -112,11 +112,17 @@ export default class Messages extends Component {
   };
 
   fetchMessages = async channelId => {
-    const { meta, data } = await pnut.channelMessages(channelId, {
+    const params = {
       updateMarker: 1,
-      includeRaw: 1,
-      connectionId: sessionStorage.getItem("connection_id")
-    });
+      includeRaw: 1
+    };
+
+    const connectionId = sessionStorage.getItem("connection_id");
+    if (connectionId) {
+      params.connectionId = connectionId;
+    }
+
+    const { meta, data } = await pnut.channelMessages(channelId, params);
 
     this.setState({
       messages: data,

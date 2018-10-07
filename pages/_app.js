@@ -41,9 +41,8 @@ export default class JellyTime extends App {
       ws.send("ping");
     }, 45000);
 
-    ws.addEventListener("open", event => {
+    ws.addEventListener("open", _ => {
       console.log("Socket connection established");
-      console.log(event.data);
     });
 
     ws.addEventListener("message", event => {
@@ -56,10 +55,9 @@ export default class JellyTime extends App {
       }
     });
 
-    ws.addEventListener("close", event => {
-      console.log("Socket closed");
-      console.log(event);
-
+    ws.addEventListener("close", _ => {
+      console.log("Socket connection closed");
+      sessionStorage.removeItem("connection_id");
       clearInterval(pingInterval);
     });
 
